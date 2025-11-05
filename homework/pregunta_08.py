@@ -7,7 +7,28 @@ utilizar pandas, numpy o scipy.
 
 
 def pregunta_08():
-    """
+    with open("files/input/data.csv", "r") as data:
+        diccionario = {}
+        lista = []
+        for renglon in data:
+            column = renglon.strip().split("\t")
+            numero, letra = column[1], column[0]
+            if numero not in diccionario:
+                diccionario[numero] = [letra] #si no está agregue numero
+            else:               
+                diccionario[numero].append(letra) #si ya está añada nueva letra
+        for numero,lista_letras in diccionario.items():
+            repetidas = set(lista_letras) #eliminar repetidos
+            repetidas = list(repetidas)
+            repetidas.sort()
+            añadir = (int(numero), list(repetidas)) #cambiar formato a lista
+            lista.append(añadir)
+        lista.sort()
+        return lista
+    
+#print(pregunta_08())
+
+"""
     Genere una lista de tuplas, donde el primer elemento de cada tupla
     contiene  el valor de la segunda columna; la segunda parte de la tupla
     es una lista con las letras (ordenadas y sin repetir letra) de la
@@ -23,7 +44,7 @@ def pregunta_08():
      (5, ['B', 'C', 'D', 'E']),
      (6, ['A', 'B', 'C', 'E']),
      (7, ['A', 'C', 'D', 'E']),
-     (8, ['A', 'B', 'D', 'E']),
+     (8, ['A', 'B', 'D', 'E']), 
      (9, ['A', 'B', 'C', 'E'])]
 
     """

@@ -7,7 +7,24 @@ utilizar pandas, numpy o scipy.
 
 
 def pregunta_09():
-    """
+    diccionario = {
+    
+    }
+    with open("files/input/data.csv", "r") as data:
+        for renglon in data:
+            renglon = renglon.strip().split("\t")
+            segmento = renglon[4].split(",")
+            for strings in segmento:
+                letras = strings[:3]
+                # repetido?
+                if letras not in diccionario:
+                    diccionario[letras] = 1
+                else:
+                    diccionario[letras] += 1
+    return diccionario
+
+
+"""
     Retorne un diccionario que contenga la cantidad de registros en que
     aparece cada clave de la columna 5.
 

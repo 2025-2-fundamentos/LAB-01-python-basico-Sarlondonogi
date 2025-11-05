@@ -7,7 +7,26 @@ utilizar pandas, numpy o scipy.
 
 
 def pregunta_07():
-    """
+    with open("files/input/data.csv", "r") as data:
+        diccionario = {}
+        lista = []
+        for renglon in data:
+            column = renglon.strip().split("\t")
+            numero, letra = column[1], column[0]
+            if numero not in diccionario:
+                diccionario[numero] = [letra] #si no está agregue numero
+            else:               
+                diccionario[numero].append(letra) #si ya está añada nueva letra
+        for numero,lista_letras in diccionario.items():
+            añadir = (int(numero), lista_letras)
+            lista.append(añadir)
+        lista.sort()
+        return lista
+    
+
+
+
+"""
     Retorne una lista de tuplas que asocien las columnas 0 y 1. Cada tupla
     contiene un valor posible de la columna 2 y una lista con todas las letras
     asociadas (columna 1) a dicho valor de la columna 2.

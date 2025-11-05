@@ -7,7 +7,16 @@ utilizar pandas, numpy o scipy.
 
 
 def pregunta_10():
-    """
+    lista = []
+    with open("files/input/data.csv", "r") as data:
+        for fila in data:
+            renglon = fila.strip().split("\t")
+            letra, elementos_1, elementos_2 = renglon[0], len(renglon[3].split(",")), len(renglon[4].split(","))
+            lista.append((letra, elementos_1, elementos_2))
+
+    return lista
+
+"""
     Retorne una lista de tuplas contengan por cada tupla, la letra de la
     columna 1 y la cantidad de elementos de las columnas 4 y 5.
 
